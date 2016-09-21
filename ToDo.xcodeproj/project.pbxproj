@@ -14,6 +14,7 @@
 		7036955E1D91340300B6C850 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7036955C1D91340300B6C850 /* LaunchScreen.storyboard */; };
 		703695761D9140D300B6C850 /* ToDoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703695751D9140D300B6C850 /* ToDoItemTests.swift */; };
 		703695781D91431100B6C850 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703695771D91431100B6C850 /* ToDoItem.swift */; };
+		7036957A1D922C4000B6C850 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703695791D922C4000B6C850 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		7036956A1D91340300B6C850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		703695751D9140D300B6C850 /* ToDoItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToDoItemTests.swift; path = ../Model/ToDoItemTests.swift; sourceTree = "<group>"; };
 		703695771D91431100B6C850 /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToDoItem.swift; path = Model/Model/ToDoItem.swift; sourceTree = "<group>"; };
+		703695791D922C4000B6C850 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Model/Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		703695471D91340300B6C850 = {
 			isa = PBXGroup;
 			children = (
+				703695791D922C4000B6C850 /* Location.swift */,
 				703695771D91431100B6C850 /* ToDoItem.swift */,
 				703695521D91340300B6C850 /* ToDo */,
 				703695671D91340300B6C850 /* ToDoTests */,
@@ -206,6 +209,7 @@
 			files = (
 				703695561D91340300B6C850 /* ViewController.swift in Sources */,
 				703695541D91340300B6C850 /* AppDelegate.swift in Sources */,
+				7036957A1D922C4000B6C850 /* Location.swift in Sources */,
 				703695781D91431100B6C850 /* ToDoItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
