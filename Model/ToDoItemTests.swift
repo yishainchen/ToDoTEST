@@ -73,5 +73,5 @@ class ToDoItemTests: XCTestCase {
         XCTAssertNotEqual(firstItem, secondItem)
     }
 
-    
+ 
 }
