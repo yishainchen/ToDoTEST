@@ -103,8 +103,8 @@
 		703695671D91340300B6C850 /* ToDoTests */ = {
 			isa = PBXGroup;
 			children = (
-				7036957B1D92324B00B6C850 /* LocationTests.swift */,
 				7036957E1D923AF500B6C850 /* ItemManagerTests.swift */,
+				7036957B1D92324B00B6C850 /* LocationTests.swift */,
 				703695751D9140D300B6C850 /* ToDoItemTests.swift */,
 				7036956A1D91340300B6C850 /* Info.plist */,
 			);
