@@ -25,9 +25,12 @@ func ==(lhs: Location, rhs: Location) -> Bool {
     if lhs.coordinate?.latitude != rhs.coordinate?.latitude {
         return false
     }
-//    if lhs.coordinate?.longitude != rhs.coordinate?.longitude {
-//        return false
-//    }
+   if lhs.coordinate?.longitude != rhs.coordinate?.longitude {
+        return false
+    }
+    if lhs.name != rhs.name {
+        return false
+    }
     return true }
 
 
