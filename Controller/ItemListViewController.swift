@@ -10,14 +10,14 @@ import UIKit
 
 class ItemListViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var dataProvider: ItemListDataProvider!
     
-    var tableView: UITableView?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView = UITableView()
-        // Do any additional setup after loading the view.
+        tableView.dataSource = dataProvider 
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

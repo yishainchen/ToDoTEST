@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item View Controller-->
+        <!--Item List View Controller-->
         <scene sceneID="70O-oy-5v8">
             <objects>
-                <viewController id="T5c-Qd-b90" customClass="ItemViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemListViewController" id="T5c-Qd-b90" customClass="ItemListViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fxO-7H-BzX"/>
                         <viewControllerLayoutGuide type="bottom" id="e27-EA-hWD"/>
@@ -30,8 +30,13 @@
                             <constraint firstItem="JGf-dZ-udG" firstAttribute="bottom" secondItem="e27-EA-hWD" secondAttribute="top" id="nqT-qv-cii"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dataProvider" destination="yrj-N3-R54" id="1uX-WT-KGZ"/>
+                        <outlet property="tableView" destination="JGf-dZ-udG" id="NAm-fo-Kzw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NnY-AB-IcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="yrj-N3-R54" customClass="ItemListDataProvider" customModule="ToDo" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-12" y="127.28635682158921"/>
         </scene>

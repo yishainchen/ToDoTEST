@@ -19,6 +19,7 @@
 		703695811D923C7D00B6C850 /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703695801D923C7D00B6C850 /* ItemManager.swift */; };
 		70C951381DA1FE2A00F9962B /* ItemListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C951371DA1FE2A00F9962B /* ItemListViewControllerTests.swift */; };
 		70C9513B1DA2038B00F9962B /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9513A1DA2038B00F9962B /* ItemListViewController.swift */; };
+		70C951401DA220C500F9962B /* ItemListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9513F1DA220C500F9962B /* ItemListDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		703695801D923C7D00B6C850 /* ItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemManager.swift; path = Model/ItemManager.swift; sourceTree = "<group>"; };
 		70C951371DA1FE2A00F9962B /* ItemListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListViewControllerTests.swift; path = Controller/ItemListViewControllerTests.swift; sourceTree = "<group>"; };
 		70C9513A1DA2038B00F9962B /* ItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListViewController.swift; path = Controller/ItemListViewController.swift; sourceTree = SOURCE_ROOT; };
+		70C9513F1DA220C500F9962B /* ItemListDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListDataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				70C9513A1DA2038B00F9962B /* ItemListViewController.swift */,
+				70C9513F1DA220C500F9962B /* ItemListDataProvider.swift */,
 			);
 			name = Controller;
 			path = ToDo;
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				703695811D923C7D00B6C850 /* ItemManager.swift in Sources */,
+				70C951401DA220C500F9962B /* ItemListDataProvider.swift in Sources */,
 				70C9513B1DA2038B00F9962B /* ItemListViewController.swift in Sources */,
 				703695541D91340300B6C850 /* AppDelegate.swift in Sources */,
 				7036957A1D922C4000B6C850 /* Location.swift in Sources */,
