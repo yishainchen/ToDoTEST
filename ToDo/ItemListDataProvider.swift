@@ -10,9 +10,11 @@ import UIKit
 
 class ItemListDataProvider: NSObject,UITableViewDataSource {
     
+    var itemManager: ItemManager?
+    
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return itemManager?.toDoCount ?? 0
     }
     
     func tableView(_ tableView: UITableView,
@@ -20,5 +22,12 @@ class ItemListDataProvider: NSObject,UITableViewDataSource {
         UITableViewCell {
             return UITableViewCell()
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 2
+    }
+    
+
     
 }

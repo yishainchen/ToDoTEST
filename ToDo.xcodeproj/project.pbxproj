@@ -20,6 +20,7 @@
 		70C951381DA1FE2A00F9962B /* ItemListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C951371DA1FE2A00F9962B /* ItemListViewControllerTests.swift */; };
 		70C9513B1DA2038B00F9962B /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9513A1DA2038B00F9962B /* ItemListViewController.swift */; };
 		70C951401DA220C500F9962B /* ItemListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9513F1DA220C500F9962B /* ItemListDataProvider.swift */; };
+		70C951421DA24D5500F9962B /* ItemListDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C951411DA24D5500F9962B /* ItemListDataProviderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		70C951371DA1FE2A00F9962B /* ItemListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListViewControllerTests.swift; path = Controller/ItemListViewControllerTests.swift; sourceTree = "<group>"; };
 		70C9513A1DA2038B00F9962B /* ItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListViewController.swift; path = Controller/ItemListViewController.swift; sourceTree = SOURCE_ROOT; };
 		70C9513F1DA220C500F9962B /* ItemListDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListDataProvider.swift; sourceTree = "<group>"; };
+		70C951411DA24D5500F9962B /* ItemListDataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListDataProviderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				70C951371DA1FE2A00F9962B /* ItemListViewControllerTests.swift */,
+				70C951411DA24D5500F9962B /* ItemListDataProviderTests.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70C951421DA24D5500F9962B /* ItemListDataProviderTests.swift in Sources */,
 				7036957F1D923AF500B6C850 /* ItemManagerTests.swift in Sources */,
 				7036957C1D92324B00B6C850 /* LocationTests.swift in Sources */,
 				703695761D9140D300B6C850 /* ToDoItemTests.swift in Sources */,

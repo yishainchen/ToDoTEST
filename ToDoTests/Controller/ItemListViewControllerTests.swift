@@ -12,8 +12,13 @@ import XCTest
 
 class ItemListViewControllerTests: XCTestCase {
     
+    var sut: ItemListViewController!
+    
     override func setUp() {
         super.setUp()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        sut = storyboard.instantiateViewController(withIdentifier: "ItemListViewController") as! ItemListViewController
+            _ = sut.view
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
@@ -23,18 +28,25 @@ class ItemListViewControllerTests: XCTestCase {
     }
 
     func test_TableViewIsNotNilAfterViewDidLoad() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let sut = storyboard.instantiateViewController(withIdentifier: "ItemListViewController") as! ItemListViewController
-            _ = sut.view
+        
             XCTAssertNotNil(sut.tableView)
     }
     
     func testViewDidLoad_ShouldSetTableViewDataSource() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let sut = storyboard.instantiateViewController(withIdentifier: "ItemListViewController") as! ItemListViewController
-            _ = sut.view
+        
             XCTAssertNotNil(sut.tableView.dataSource)
             XCTAssertTrue(sut.tableView.dataSource is ItemListDataProvider)
+    }
+    
+    func testViewDidLoad_ShouldSetTableViewDelegate() {
+        XCTAssertNotNil(sut.tableView.delegate)
+        XCTAssertTrue(sut.tableView.delegate is ItemListDataProvider)
+    }
+    
+    
+    func testViewDidLoad_ShouldSetDelegateAndDataSourceToTheSameObject() {
+        XCTAssertEqual(sut.tableView.dataSource as? ItemListDataProvider,
+                       sut.tableView.delegate as? ItemListDataProvider)
     }
 
 }
