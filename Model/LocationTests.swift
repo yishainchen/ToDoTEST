@@ -50,7 +50,7 @@ class LocationTests: XCTestCase {
                                                    secondName: String,
                                                    firstLongLat: (Double, Double)?,
                                                    secondLongLat: (Double, Double)?,
-                                                   line:UInt) {
+                                                   line:UInt = #line) {
         let firstCoord: CLLocationCoordinate2D?
         if let firstLongLat = firstLongLat {
             firstCoord = CLLocationCoordinate2D(
@@ -69,6 +69,7 @@ class LocationTests: XCTestCase {
         } else {
             secondCoord = nil
         }
+        
         let secondLocation = Location(name: secondName,
                                       coordinate: secondCoord)
         XCTAssertNotEqual(firstLocation, secondLocation,line:line)
@@ -78,8 +79,7 @@ class LocationTests: XCTestCase {
         performNotEqualTestWithLocationProperties (firstName: "Home",
                                                    secondName: "Home",
                                                    firstLongLat: (1.0, 0.0),
-                                                   secondLongLat: (0.0, 0.0),
-                                                   line:52)
+                                                   secondLongLat: (0.0, 0.0))
     }
     
    
@@ -87,16 +87,12 @@ class LocationTests: XCTestCase {
 
 
     func testWhenLongitudeDifferes_ShouldBeNotEqual() {
-        let firstCoordinate = CLLocationCoordinate2D(latitude: 0.0,
-                                                     longitude: 1.0)
-        let firstLocation = Location(name: "Home",
-                                     coordinate: firstCoordinate)
-        let secondCoordinate = CLLocationCoordinate2D(latitude: 0.0,
-                                                      longitude: 0.0)
-        let secondLocation = Location(name: "Home",
-                                      coordinate: secondCoordinate)
-        XCTAssertNotEqual(firstLocation, secondLocation)
+        performNotEqualTestWithLocationProperties(firstName: "Home",
+                                                  secondName: "Home",
+                                                  firstLongLat: (0.0, 1.0),
+                                                  secondLongLat: (0.0, 0.0))
     }
+    
     
 
     
