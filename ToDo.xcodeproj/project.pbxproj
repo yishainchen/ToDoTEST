@@ -21,6 +21,7 @@
 		70C9513B1DA2038B00F9962B /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9513A1DA2038B00F9962B /* ItemListViewController.swift */; };
 		70C951401DA220C500F9962B /* ItemListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9513F1DA220C500F9962B /* ItemListDataProvider.swift */; };
 		70C951421DA24D5500F9962B /* ItemListDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C951411DA24D5500F9962B /* ItemListDataProviderTests.swift */; };
+		70C951441DA3589B00F9962B /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C951431DA3589B00F9962B /* ItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		70C9513A1DA2038B00F9962B /* ItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListViewController.swift; path = Controller/ItemListViewController.swift; sourceTree = SOURCE_ROOT; };
 		70C9513F1DA220C500F9962B /* ItemListDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListDataProvider.swift; sourceTree = "<group>"; };
 		70C951411DA24D5500F9962B /* ItemListDataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListDataProviderTests.swift; sourceTree = "<group>"; };
+		70C951431DA3589B00F9962B /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			children = (
 				70C9513A1DA2038B00F9962B /* ItemListViewController.swift */,
 				70C9513F1DA220C500F9962B /* ItemListDataProvider.swift */,
+				70C951431DA3589B00F9962B /* ItemCell.swift */,
 			);
 			name = Controller;
 			path = ToDo;
@@ -263,6 +266,7 @@
 				70C951401DA220C500F9962B /* ItemListDataProvider.swift in Sources */,
 				70C9513B1DA2038B00F9962B /* ItemListViewController.swift in Sources */,
 				703695541D91340300B6C850 /* AppDelegate.swift in Sources */,
+				70C951441DA3589B00F9962B /* ItemCell.swift in Sources */,
 				7036957A1D922C4000B6C850 /* Location.swift in Sources */,
 				703695781D91431100B6C850 /* ToDoItem.swift in Sources */,
 			);
