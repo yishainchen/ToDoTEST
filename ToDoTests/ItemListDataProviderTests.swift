@@ -24,10 +24,9 @@ extension ItemListDataProviderTests {
     
     class MockItemCell : ItemCell {
         
-        var configCellGotCalled = false
-        
-        func configCellWithItem(item: ToDoItem) {
-            configCellGotCalled = true
+        var toDoItem: ToDoItem?
+        override func configCellWithItem(item: ToDoItem) {
+            toDoItem = item
         }
     }
 
@@ -120,9 +119,9 @@ class ItemListDataProviderTests: XCTestCase {
         sut.itemManager?.addItem(item: toDoItem)
         mockTableView.reloadData()
         let cell = mockTableView.cellForRow(at: (IndexPath(row:0, section: 0))) as! MockItemCell
-        cell.configCellWithItem(item: ToDoItem(title: ""))
         
-        XCTAssertTrue(cell.configCellGotCalled)
+        XCTAssertEqual(cell.toDoItem, toDoItem)
+
     }
 
 }
