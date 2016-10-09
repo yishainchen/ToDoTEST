@@ -36,14 +36,25 @@ class ItemListDataProvider: NSObject,UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) ->
         UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell",
-                                                     for: indexPath) as! ItemCell
-            
-            if let toDoItem = itemManager?.itemAtIndex(index: indexPath.row) {
-                cell.configCellWithItem(item: toDoItem)
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "ItemCell",
+                for: indexPath) as! ItemCell
+            guard let itemManager = itemManager else { fatalError() }
+            guard let section = Section(rawValue: indexPath.section) else
+            {
+                fatalError()
             }
-            
+            let item: ToDoItem
+            switch section {
+            case .ToDo:
+                item = itemManager.itemAtIndex(index: indexPath.row)
+            case .Done:
+                item = itemManager.doneItemAtIndex(index: indexPath.row)
+            }
+            cell.configCellWithItem(item: item)
             return cell
+            
+            
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

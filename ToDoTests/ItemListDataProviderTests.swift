@@ -13,6 +13,8 @@ import XCTest
 extension ItemListDataProviderTests {
     
     class MockTableView : UITableView {
+        
+        
         var cellGotDequeued = false
         override func dequeueReusableCell(withIdentifier identifier: String, for indexPath: IndexPath) -> UITableViewCell {
             cellGotDequeued = true
@@ -20,9 +22,24 @@ extension ItemListDataProviderTests {
                 withIdentifier: identifier,
                 for: indexPath as IndexPath)
         }
+        
+        class func mockTableViewWithDataSource(
+            dataSource: UITableViewDataSource) -> MockTableView {
+        
+        let mockTableView = MockTableView(
+            frame: CGRect(x: 0, y: 0, width: 320, height: 480),
+            style: .plain)
+        mockTableView.dataSource = dataSource
+        mockTableView.register(MockItemCell.self,
+        forCellReuseIdentifier: "ItemCell")
+        return mockTableView
+        }
     }
     
+    
+    
     class MockItemCell : ItemCell {
+        
         
         var toDoItem: ToDoItem?
         override func configCellWithItem(item: ToDoItem) {
@@ -98,10 +115,7 @@ class ItemListDataProviderTests: XCTestCase {
     }
     
     func testCellForRow_DequeuesCell() {
-        let mockTableView = MockTableView()
-        mockTableView.dataSource = sut
-        mockTableView.register(ItemCell.self,
-                                    forCellReuseIdentifier: "ItemCell")
+        let mockTableView = MockTableView.mockTableViewWithDataSource(dataSource: sut)
         sut.itemManager?.addItem(item: ToDoItem(title: "First"))
         mockTableView.reloadData()
         _ = mockTableView.cellForRow(at: IndexPath(row: 0, section: 0))
@@ -110,10 +124,8 @@ class ItemListDataProviderTests: XCTestCase {
     
     
     func testConfigCell_GetsCalledInCellForRow() {
-        let mockTableView = MockTableView()
-        mockTableView.dataSource = sut
-        mockTableView.register(MockItemCell.self,
-                                    forCellReuseIdentifier: "ItemCell")
+        let mockTableView = MockTableView.mockTableViewWithDataSource(dataSource: sut)
+        
         let toDoItem = ToDoItem(title: "First",
                                 itemDescription: "First description")
         sut.itemManager?.addItem(item: toDoItem)
@@ -123,5 +135,22 @@ class ItemListDataProviderTests: XCTestCase {
         XCTAssertEqual(cell.toDoItem, toDoItem)
 
     }
+    
+    func testCellInSectionTwo_GetsConfiguredWithDoneItem() {
+        let mockTableView = MockTableView.mockTableViewWithDataSource(dataSource: sut)
+        let firstItem = ToDoItem(title: "First",
+                                 itemDescription: "First description")
+        sut.itemManager?.addItem(item: firstItem)
+        let secondItem = ToDoItem(title: "Second",
+                                  itemDescription: "Second description")
+        sut.itemManager?.addItem(item: secondItem)
+        sut.itemManager?.checkItemAtIndex(index: 1)
+        mockTableView.reloadData()
+        let cell = mockTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! MockItemCell
+        
+        XCTAssertEqual(cell.toDoItem, secondItem)
+    }
+
+    
 
 }
