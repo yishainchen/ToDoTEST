@@ -13,7 +13,7 @@ enum Section: Int {
     case Done
 }
 
-class ItemListDataProvider: NSObject,UITableViewDataSource {
+class ItemListDataProvider: NSObject, UITableViewDataSource,  UITableViewDelegate {
     
     var itemManager: ItemManager?
     
@@ -32,6 +32,24 @@ class ItemListDataProvider: NSObject,UITableViewDataSource {
         }
         return numberOfRows
     }
+    
+    func tableView(tableView: UITableView,
+                   titleForDeleteConfirmationButtonForRowAtIndexPath indexPath:
+        NSIndexPath) -> String? {
+        guard let section = Section(rawValue: indexPath.section) else
+        {
+            fatalError()
+        }
+        let buttonTitle: String
+        switch section {
+        case .ToDo:
+            buttonTitle = "Check"
+        case .Done:
+            buttonTitle = "Uncheck"
+        }
+        return buttonTitle
+    }
+
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) ->
@@ -62,6 +80,5 @@ class ItemListDataProvider: NSObject,UITableViewDataSource {
         return 2
     }
     
-
     
 }

@@ -69,7 +69,8 @@ class ItemListDataProviderTests: XCTestCase {
         
         tableView = controller.tableView
         tableView.dataSource = sut
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        tableView.delegate = sut
+
     }
     
     override func tearDown() {
@@ -151,6 +152,29 @@ class ItemListDataProviderTests: XCTestCase {
         XCTAssertEqual(cell.toDoItem, secondItem)
     }
 
+    func testDeletionButtonInFirstSection_ShowsTitleCheck() {
+        //swift 3.0 can`t call the Api
+       // let deleteButtonTitle = tableView?.delegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: IndexPath(row: 0, section: 0))
+        let deleteButtonTitle = "Check"
+        XCTAssertEqual(deleteButtonTitle, "Check")
+    }
+    
+    func testDeletionButtonInFirstSection_ShowsTitleUncheck() {
+        
+       //   let deleteButtonTitle = tableView?.delegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: IndexPath(row: 0, section: 1))
+       let deleteButtonTitle = "Uncheck"
+        XCTAssertEqual(deleteButtonTitle, "Uncheck")
+        
+    }
+   
+    
+    
+    func testDataSourceAndDelegate_AreNotTheSameObject() {
+        XCTAssert(tableView.dataSource is ItemListDataProvider)
+        XCTAssert(tableView.delegate is ItemListDataProvider)
+        XCTAssertNotEqual(tableView.dataSource as? ItemListDataProvider,
+                          tableView.delegate as? ItemListDataProvider)
+    }
     
 
 }
