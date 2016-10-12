@@ -17,6 +17,7 @@ class ItemListDataProvider: NSObject, UITableViewDataSource,  UITableViewDelegat
     
     var itemManager: ItemManager?
     
+    
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         guard let itemManager = itemManager else { return 0 }
@@ -80,5 +81,20 @@ class ItemListDataProvider: NSObject, UITableViewDataSource,  UITableViewDelegat
         return 2
     }
     
-    
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCellEditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        guard let itemManager = itemManager else { fatalError() }
+        guard let section = Section(rawValue: indexPath.section) else
+        {
+            fatalError()
+        }
+        switch section {
+        case .ToDo:
+            itemManager.checkItemAtIndex(index: indexPath.row)
+        case .Done:
+            itemManager.uncheckItemAtIndex(index: indexPath.row)
+        }
+        tableView.reloadData()
+    }
 }

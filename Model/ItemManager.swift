@@ -27,8 +27,6 @@ class ItemManager {
     func checkItemAtIndex(index: Int) {
         let item = toDoItems.remove(at: index)
         doneItems.append(item)
-        
-
     }
     
     func doneItemAtIndex(index: Int) -> ToDoItem {
@@ -38,5 +36,10 @@ class ItemManager {
     func removeAllItems() {
         toDoItems.removeAll()
         doneItems.removeAll()
+    }
+    
+    func uncheckItemAtIndex(index: Int) {
+        let item = doneItems.remove(at: index)
+        toDoItems.append(item)
     }
 }

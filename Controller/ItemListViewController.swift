@@ -14,6 +14,7 @@ class ItemListViewController: UIViewController {
 //    @IBOutlet var dataProvider: ItemListDataProvider!
     @IBOutlet var dataProvider: protocol<UITableViewDataSource, UITableViewDelegate>!
     
+    
     override func viewDidLoad() {
         tableView.dataSource = dataProvider
         tableView.delegate = dataProvider

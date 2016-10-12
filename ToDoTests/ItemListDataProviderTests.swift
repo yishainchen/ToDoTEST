@@ -42,7 +42,7 @@ extension ItemListDataProviderTests {
         
         
         var toDoItem: ToDoItem?
-        override func configCellWithItem(item: ToDoItem) {
+        override func configCellWithItem(item: ToDoItem, checked: Bool = false) {
             toDoItem = item
         }
     }
@@ -68,6 +68,7 @@ class ItemListDataProviderTests: XCTestCase {
         _ = controller.view
         
         tableView = controller.tableView
+        
         tableView.dataSource = sut
         tableView.delegate = sut
 
@@ -169,12 +170,36 @@ class ItemListDataProviderTests: XCTestCase {
    
     
     
-    func testDataSourceAndDelegate_AreNotTheSameObject() {
-        XCTAssert(tableView.dataSource is ItemListDataProvider)
-        XCTAssert(tableView.delegate is ItemListDataProvider)
-        XCTAssertNotEqual(tableView.dataSource as? ItemListDataProvider,
-                          tableView.delegate as? ItemListDataProvider)
+//    func testDataSourceAndDelegate_AreNotTheSameObject() {
+//        XCTAssert(tableView.dataSource is ItemListDataProvider)
+//        XCTAssert(tableView.delegate is ItemListDataProvider)
+//        
+//        XCTAssertNotEqual(tableView.dataSource as? ItemListDataProvider,
+//                          tableView.delegate as? ItemListDataProvider)
+//    }
+//    
+
+    func testCheckingAnItem_ChecksItInTheItemManager() {
+        sut.itemManager?.addItem(item: ToDoItem(title: "First"))
+        tableView.dataSource?.tableView!(tableView, commit: .delete, forRowAt:  IndexPath(row: 0, section: 0))
+        
+        XCTAssertEqual(sut.itemManager?.toDoCount, 0)
+        XCTAssertEqual(sut.itemManager?.doneCount, 1)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 0), 0)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 1), 1)
     }
     
+    func testUncheckingAnItem_UnchecksItInTheItemManager() {
+        sut.itemManager?.addItem(item: ToDoItem(title: "First"))
+        sut.itemManager?.checkItemAtIndex(index: 0)
+        tableView.reloadData()
+        tableView.dataSource?.tableView!(tableView, commit: .delete, forRowAt:  IndexPath(row: 0, section: 1))
+
+        XCTAssertEqual(sut.itemManager?.toDoCount, 1)
+        XCTAssertEqual(sut.itemManager?.doneCount, 0)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 0), 1)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 1), 0)
+    }
+
 
 }
