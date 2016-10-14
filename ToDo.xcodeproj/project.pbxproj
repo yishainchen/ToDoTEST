@@ -23,6 +23,8 @@
 		7043A0E81DAE3A8E0054B947 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7043A0E71DAE3A8E0054B947 /* MapKit.framework */; };
 		7043A0EA1DAF69B70054B947 /* InputViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043A0E91DAF69B70054B947 /* InputViewControllerTests.swift */; };
 		7043A0EC1DAF6A100054B947 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043A0EB1DAF6A100054B947 /* InputViewController.swift */; };
+		7043A0EE1DB08C290054B947 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043A0ED1DB08C290054B947 /* APIClientTests.swift */; };
+		7043A0F01DB08C700054B947 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043A0EF1DB08C700054B947 /* APIClient.swift */; };
 		70C951381DA1FE2A00F9962B /* ItemListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C951371DA1FE2A00F9962B /* ItemListViewControllerTests.swift */; };
 		70C9513B1DA2038B00F9962B /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9513A1DA2038B00F9962B /* ItemListViewController.swift */; };
 		70C951401DA220C500F9962B /* ItemListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9513F1DA220C500F9962B /* ItemListDataProvider.swift */; };
@@ -61,6 +63,8 @@
 		7043A0E71DAE3A8E0054B947 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7043A0E91DAF69B70054B947 /* InputViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewControllerTests.swift; sourceTree = "<group>"; };
 		7043A0EB1DAF6A100054B947 /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
+		7043A0ED1DB08C290054B947 /* APIClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClientTests.swift; path = Model/Model/APIClientTests.swift; sourceTree = SOURCE_ROOT; };
+		7043A0EF1DB08C700054B947 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		70C951371DA1FE2A00F9962B /* ItemListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListViewControllerTests.swift; path = Controller/ItemListViewControllerTests.swift; sourceTree = "<group>"; };
 		70C9513A1DA2038B00F9962B /* ItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListViewController.swift; path = Controller/ItemListViewController.swift; sourceTree = SOURCE_ROOT; };
 		70C9513F1DA220C500F9962B /* ItemListDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListDataProvider.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				70C951391DA1FE3300F9962B /* Controller */,
 				70C951361DA1FE0800F9962B /* Model */,
 				7036956A1D91340300B6C850 /* Info.plist */,
+				7043A0ED1DB08C290054B947 /* APIClientTests.swift */,
 			);
 			path = ToDoTests;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 				703695801D923C7D00B6C850 /* ItemManager.swift */,
 				703695791D922C4000B6C850 /* Location.swift */,
 				703695771D91431100B6C850 /* ToDoItem.swift */,
+				7043A0EF1DB08C700054B947 /* APIClient.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -297,6 +303,7 @@
 				7043A0EC1DAF6A100054B947 /* InputViewController.swift in Sources */,
 				703695811D923C7D00B6C850 /* ItemManager.swift in Sources */,
 				70C951401DA220C500F9962B /* ItemListDataProvider.swift in Sources */,
+				7043A0F01DB08C700054B947 /* APIClient.swift in Sources */,
 				70C9513B1DA2038B00F9962B /* ItemListViewController.swift in Sources */,
 				703695541D91340300B6C850 /* AppDelegate.swift in Sources */,
 				70C951441DA3589B00F9962B /* ItemCell.swift in Sources */,
@@ -316,6 +323,7 @@
 				7043A0EA1DAF69B70054B947 /* InputViewControllerTests.swift in Sources */,
 				7036957C1D92324B00B6C850 /* LocationTests.swift in Sources */,
 				7043A0E31DAE38610054B947 /* DetailViewControllerTests.swift in Sources */,
+				7043A0EE1DB08C290054B947 /* APIClientTests.swift in Sources */,
 				703695761D9140D300B6C850 /* ToDoItemTests.swift in Sources */,
 				70C951381DA1FE2A00F9962B /* ItemListViewControllerTests.swift in Sources */,
 			);
