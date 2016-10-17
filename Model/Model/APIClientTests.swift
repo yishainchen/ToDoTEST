@@ -12,26 +12,31 @@ import XCTest
 
 extension APIClientTests {
     class  MockURLSession : ToDoURLSession {
-        typealias Handler = (NSData?, URLResponse?, NSError?)
+         typealias Handler = (Data?, URLResponse?, NSError?)
             -> Void
         var completionHandler: Handler?
-        var url: NSURL?
-        func dataTaskWithURL(url: NSURL,
-                             completionHandler: @escaping (NSData?, URLResponse?, NSError?) ->
-            Void) -> URLSessionDataTask {
+        var url: URL?
+        
+        
+        func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
             self.url = url
             self.completionHandler = completionHandler
-            return URLSession.shared.dataTask(with: url as URL)
+            return URLSession.shared.dataTask(with: url)
         }
     }
 }
 
 class APIClientTests: XCTestCase {
     
-    
+    var sut: APIClient!
+    var mockURLSession: MockURLSession!
+
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        sut = APIClient()
+        mockURLSession = MockURLSession()
+        sut.session = mockURLSession
     }
     
     override func tearDown() {
@@ -40,14 +45,13 @@ class APIClientTests: XCTestCase {
     }
     
     func testLogin_MakesRequestWithUsernameAndPassword() {
-        let sut = APIClient()
         
-        let mockURLSession = MockURLSession()
-        sut.session = mockURLSession
         let completion = { (error: Error?) in }
-        sut.loginUserWithName("dasdom",
+        sut.loginUserWithName(
+            "dasdom",
                               password: "1234",
                               completion: completion)
+        
         XCTAssertNotNil(mockURLSession.completionHandler)
         guard let url = mockURLSession.url else { XCTFail(); return }
         let urlComponents = NSURLComponents(url: url as URL,

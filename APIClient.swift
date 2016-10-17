@@ -10,26 +10,28 @@ import Foundation
 
 
 
-protocol ToDoURLSession {
-    func dataTaskWithURL(url: NSURL,
-                         completionHandler: (NSData?, URLResponse?, NSError?) ->
-        Void) -> URLSessionDataTask
-}
-
 
 class APIClient {
     lazy var session: ToDoURLSession = URLSession.shared
     
-    func loginUserWithName(username: String,
+    func loginUserWithName(_ username: String,
                            password: String,
-                           completion: (Error?) -> Void) {
+                           completion: (@escaping (Error?) -> Void)) {
         
         
         guard let url = NSURL(string: "https://awesometodos.com/login?username=\(username)&password=\(password)") else
-                { fatalError() }
+        { fatalError() }
+      
         
     }
 }
+
+
+protocol ToDoURLSession {
+    
+    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Swift.Void) -> URLSessionDataTask
+}
+
 
 extension URLSession : ToDoURLSession {
 
