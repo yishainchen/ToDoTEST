@@ -9,8 +9,6 @@
 import Foundation
 
 
-
-
 class APIClient {
     lazy var session: ToDoURLSession = URLSession.shared
     
@@ -18,21 +16,32 @@ class APIClient {
                            password: String,
                            completion: (@escaping (Error?) -> Void)) {
         
-        
-        guard let url = NSURL(string: "https://awesometodos.com/login?username=\(username)&password=\(password)") else
+        let allowedCharacters = CharacterSet(charactersIn: "/%&=?$#+-~@<>|\\*,.()[]{}^!").inverted
+        guard let encodedUsername = username.addingPercentEncoding(withAllowedCharacters: allowedCharacters)
+            else {
+                fatalError()
+        }
+        guard let encodedPassword = password.addingPercentEncoding(withAllowedCharacters: allowedCharacters)
+            else {
+                fatalError()
+        }
+        guard let url = URL(string: "https://awesometodos.com/login?username=\(encodedUsername)&password=\(encodedPassword)") else
         { fatalError() }
       
+        let task = session.dataTask(with: url) { (data, response, error) in
+            
+            
+        }
         
+        
+
     }
 }
-
-
 protocol ToDoURLSession {
     
     func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Swift.Void) -> URLSessionDataTask
 }
 
-
 extension URLSession : ToDoURLSession {
-
+    
 }

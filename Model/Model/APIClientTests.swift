@@ -16,8 +16,6 @@ extension APIClientTests {
             -> Void
         var completionHandler: Handler?
         var url: URL?
-        
-        
         func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
             self.url = url
             self.completionHandler = completionHandler
@@ -35,6 +33,7 @@ class APIClientTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         sut = APIClient()
+        
         mockURLSession = MockURLSession()
         sut.session = mockURLSession
     }
@@ -46,12 +45,12 @@ class APIClientTests: XCTestCase {
     
     func testLogin_MakesRequestWithUsernameAndPassword() {
         
+  
         let completion = { (error: Error?) in }
         sut.loginUserWithName(
             "dasdom",
                               password: "1234",
                               completion: completion)
-        
         XCTAssertNotNil(mockURLSession.completionHandler)
         guard let url = mockURLSession.url else { XCTFail(); return }
         let urlComponents = NSURLComponents(url: url as URL,
