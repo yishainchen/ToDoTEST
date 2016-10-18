@@ -30,6 +30,7 @@
 		70C951401DA220C500F9962B /* ItemListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9513F1DA220C500F9962B /* ItemListDataProvider.swift */; };
 		70C951421DA24D5500F9962B /* ItemListDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C951411DA24D5500F9962B /* ItemListDataProviderTests.swift */; };
 		70C951441DA3589B00F9962B /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C951431DA3589B00F9962B /* ItemCell.swift */; };
+		70FA9E561DB61FEF00324456 /* KeychainAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FA9E551DB61FEF00324456 /* KeychainAccessible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		70C9513F1DA220C500F9962B /* ItemListDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListDataProvider.swift; sourceTree = "<group>"; };
 		70C951411DA24D5500F9962B /* ItemListDataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListDataProviderTests.swift; sourceTree = "<group>"; };
 		70C951431DA3589B00F9962B /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		70FA9E551DB61FEF00324456 /* KeychainAccessible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainAccessible.swift; path = Model/KeychainAccessible.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				703695791D922C4000B6C850 /* Location.swift */,
 				703695771D91431100B6C850 /* ToDoItem.swift */,
 				7043A0EF1DB08C700054B947 /* APIClient.swift */,
+				70FA9E551DB61FEF00324456 /* KeychainAccessible.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			files = (
 				7043A0EC1DAF6A100054B947 /* InputViewController.swift in Sources */,
 				703695811D923C7D00B6C850 /* ItemManager.swift in Sources */,
+				70FA9E561DB61FEF00324456 /* KeychainAccessible.swift in Sources */,
 				70C951401DA220C500F9962B /* ItemListDataProvider.swift in Sources */,
 				7043A0F01DB08C700054B947 /* APIClient.swift in Sources */,
 				70C9513B1DA2038B00F9962B /* ItemListViewController.swift in Sources */,

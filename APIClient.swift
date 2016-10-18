@@ -11,6 +11,7 @@ import Foundation
 
 class APIClient {
     lazy var session: ToDoURLSession = URLSession.shared
+    var keychainManager: KeychainAccessible?
     
     func loginUserWithName(_ username: String,
                            password: String,
@@ -28,13 +29,14 @@ class APIClient {
         guard let url = URL(string: "https://awesometodos.com/login?username=\(encodedUsername)&password=\(encodedPassword)") else
         { fatalError() }
       
-        let task = session.dataTask(with: url) { (data, response, error) in
-            
+        let task = session.dataTask(with: url) { (data, response,
+            error) -> Void in
+            let responseDict = try! JSONSerialization.jsonObject(with: data!,options: [])
+            let token = responseDict["token"] as! String
+            self.keychainManager?.setPassword(token,account: "token")
             
         }
-        
-        
-
+        task.resume()
     }
 }
 protocol ToDoURLSession {
