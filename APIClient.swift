@@ -28,12 +28,28 @@ class APIClient {
         }
         guard let url = URL(string: "https://awesometodos.com/login?username=\(encodedUsername)&password=\(encodedPassword)") else
         { fatalError() }
-      
+        
         let task = session.dataTask(with: url) { (data, response,
             error) -> Void in
-            let responseDict = try! JSONSerialization.jsonObject(with: data!,options: [])
-            let token = responseDict["token"] as! String
-            self.keychainManager?.setPassword(token,account: "token")
+            
+            if error != nil {
+                completion(WebserviceError.ResponseError)
+                return
+            }
+
+            if let theData = data {
+                do {
+                    
+                    let responseDict = try JSONSerialization.jsonObject(with: theData, options: [])  as? [String: AnyObject]
+                    let token = responseDict?["token"] as! String
+                    self.keychainManager?.setPassword(password: token,
+                                                      account: "token")
+                } catch {
+                    completion(error)
+                }
+            }else {
+                completion(WebserviceError.DataEmptyError)
+            }
             
         }
         task.resume()
@@ -42,6 +58,11 @@ class APIClient {
 protocol ToDoURLSession {
     
     func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Swift.Void) -> URLSessionDataTask
+}
+
+enum WebserviceError : Error {
+    case DataEmptyError
+    case ResponseError
 }
 
 extension URLSession : ToDoURLSession {
