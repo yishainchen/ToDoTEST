@@ -48,5 +48,21 @@ class ItemListViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.tableView.dataSource as? ItemListDataProvider,
                        sut.tableView.delegate as? ItemListDataProvider)
     }
+    
+    func testItemListViewController_HasAddBarButtonWithSelfAsTarget() {
+        XCTAssertEqual(sut.navigationItem.rightBarButtonItem?.target as?
+            UIViewController, sut)
+        
+    }
+    
+//    func testAddItem_PresentsAddItemViewController() {
+//        XCTAssertNil(sut.presentedViewController)
+//        guard let addButton = sut.navigationItem.rightBarButtonItem else
+//        { XCTFail(); return }
+//        sut.performSelector(inBackground: addButton.action!, with: addButton)
+//        XCTAssertNotNil(sut.presentedViewController)
+//        XCTAssertTrue(sut.presentedViewController is InputViewController)
+//        
+//    }
 
 }
