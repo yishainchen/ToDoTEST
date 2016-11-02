@@ -12,6 +12,19 @@ import CoreLocation
 struct Location : Equatable {
     let name: String
     let coordinate: CLLocationCoordinate2D?
+    fileprivate let nameKey = "nameKey"
+    fileprivate let latitudeKey = "latitudeKey"
+    fileprivate let longitudeKey = "longitudeKey"
+    
+    var plistDict: NSDictionary {
+        var dict = [String:AnyObject]()
+        dict[nameKey] = name as AnyObject?
+        if let coordinate = coordinate {
+            dict[latitudeKey] = coordinate.latitude as AnyObject?
+            dict[longitudeKey] = coordinate.longitude as AnyObject?
+        }
+        return dict as NSDictionary
+    }
     
     init(name: String,
          coordinate: CLLocationCoordinate2D? = nil) {

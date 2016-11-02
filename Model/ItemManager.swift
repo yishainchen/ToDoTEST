@@ -8,12 +8,31 @@
 
 import Foundation
 
-class ItemManager {
+class ItemManager : NSObject{
     var toDoCount: Int { return toDoItems.count }
     var doneCount: Int { return doneItems.count }
     private var toDoItems = [ToDoItem]()
     private var doneItems = [ToDoItem]()
     
+    var toDoPathURL: URL {
+        let fileURLs = FileManager.default.urls(
+            for: .documentDirectory, in: .userDomainMask)
+        guard let documentURL = fileURLs.first else {
+            print("Something went wrong. Documents url could not be found")
+            fatalError()
+        }
+        return documentURL.appendingPathComponent("toDoItems.plist")
+    }
+    
+    var donePathURL: URL {
+        let fileURLs = FileManager.default.urls(
+            for: .documentDirectory, in: .userDomainMask)
+        guard let documentURL = fileURLs.first else {
+            print("Something went wrong. Documents url could not be found")
+            fatalError()
+        }
+        return documentURL.appendingPathComponent("doneItems.plist")
+    }
     
     func addItem(item: ToDoItem) {
         if !toDoItems.contains(item) {
@@ -42,4 +61,42 @@ class ItemManager {
         let item = doneItems.remove(at: index)
         toDoItems.append(item)
     }
+    func save() {
+        //save todo
+        var nsToDoItems = [AnyObject]()
+        for item in toDoItems {
+            nsToDoItems.append(item.plistDict)
+        }
+        if nsToDoItems.count > 0 {
+            (nsToDoItems as NSArray).write(to: toDoPathURL,
+                                           atomically: true)
+        } else {
+            do {
+                try FileManager.default.removeItem(at: toDoPathURL)
+            } catch {
+                print(error)
+            }
+        }
+        
+        // save done
+        var nsDoneItems = [AnyObject]()
+        for item in doneItems {
+            nsDoneItems.append(item.plistDict)
+        }
+        
+        if nsDoneItems.count > 0 {
+            (nsDoneItems as NSArray).write(to: donePathURL,
+                                           atomically: true)
+        } else {
+            do {
+                try FileManager.default.removeItem(at: donePathURL)
+            } catch {
+                print(error)
+            }
+        }
+    }
+
+    
+    
+   
 }

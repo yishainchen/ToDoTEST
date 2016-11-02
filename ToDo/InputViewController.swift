@@ -37,13 +37,15 @@ class InputViewController: UIViewController {
         dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter
     }()
-    func save() {
+
+    
+    @IBAction func save() {
         guard let titleString = titleTextField.text
             , titleString.characters.count > 0 else { return }
-        let date: NSDate?
+        let date: Date?
         if let dateText = self.dateTextField.text
             , dateText.characters.count > 0 {
-            date = dateFormatter.date(from: dateText) as NSDate?
+            date = dateFormatter.date(from: dateText)
         } else {
             date = nil
         }
@@ -63,14 +65,28 @@ class InputViewController: UIViewController {
                     let item = ToDoItem(title: titleString,
                                         itemDescription: descriptionString,
                                         timestamp: date?.timeIntervalSince1970,
-                                        location: Location(name: locationName,coordinate: placeMark?.location?.coordinate))
-                    self.itemManager?.addItem(item: item)
+                                        location: Location(name: locationName,
+                                                           coordinate: placeMark?.location?.coordinate))
+                    DispatchQueue.main.async(execute: {
+                        () -> Void in
+                        self.itemManager?.addItem(item: item)
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                    
                 }
+                //多加的，書上沒寫
+            } else {
+                let item = ToDoItem(title: titleString, itemDescription: descriptionString, timestamp: date?.timeIntervalSince1970, location: Location(name: locationName))
+                self.itemManager?.addItem(item: item)
+                dismiss(animated: true, completion: nil)
             }
+            //多加的，書上沒寫
+        } else {
+            let item = ToDoItem(title: titleString, itemDescription: descriptionString, timestamp: date?.timeIntervalSince1970, location: nil)
+            self.itemManager?.addItem(item: item)
+            dismiss(animated: true, completion: nil)
         }
-    }
-    
-    @IBAction func save(_ sender: AnyObject) {
+        
     }
 }
 

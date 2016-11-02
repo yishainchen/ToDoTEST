@@ -95,12 +95,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		700040521DC8321500C24617 /* ToDo */ = {
+			isa = PBXGroup;
+			children = (
+				703695521D91340300B6C850 /* Support File */,
+				70C951351DA1FDFC00F9962B /* Model */,
+				70C9513C1DA203EE00F9962B /* Controller */,
+			);
+			name = ToDo;
+			sourceTree = "<group>";
+		};
 		703695471D91340300B6C850 = {
 			isa = PBXGroup;
 			children = (
-				70C9513C1DA203EE00F9962B /* Controller */,
-				70C951351DA1FDFC00F9962B /* Model */,
-				703695521D91340300B6C850 /* ToDo */,
+				700040521DC8321500C24617 /* ToDo */,
 				703695671D91340300B6C850 /* ToDoTests */,
 				703695511D91340300B6C850 /* Products */,
 				7043A0E61DAE3A8E0054B947 /* Frameworks */,
@@ -116,7 +124,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		703695521D91340300B6C850 /* ToDo */ = {
+		703695521D91340300B6C850 /* Support File */ = {
 			isa = PBXGroup;
 			children = (
 				703695531D91340300B6C850 /* AppDelegate.swift */,
@@ -125,6 +133,7 @@
 				7036955C1D91340300B6C850 /* LaunchScreen.storyboard */,
 				7036955F1D91340300B6C850 /* Info.plist */,
 			);
+			name = "Support File";
 			path = ToDo;
 			sourceTree = "<group>";
 		};

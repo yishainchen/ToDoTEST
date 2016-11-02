@@ -13,7 +13,7 @@ enum Section: Int {
     case Done
 }
 
-class ItemListDataProvider: NSObject, UITableViewDataSource,  UITableViewDelegate {
+class ItemListDataProvider: NSObject, UITableViewDataSource,  UITableViewDelegate, ItemManagerSettable  {
     
     var itemManager: ItemManager?
     
@@ -96,5 +96,20 @@ class ItemListDataProvider: NSObject, UITableViewDataSource,  UITableViewDelegat
             itemManager.uncheckItemAtIndex(index: indexPath.row)
         }
         tableView.reloadData()
+    }
+    // chapter6
+    func tableView(_ tableView: UITableView, didSelectRowAt
+        indexPath: IndexPath) {
+        guard let itemSection = Section(rawValue: (indexPath as NSIndexPath).section) else
+        { fatalError() }
+        switch itemSection {
+        case .ToDo:
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: "ItemSelectedNotification"),
+                object: self,
+                userInfo: ["index": (indexPath as NSIndexPath).row])
+        default:
+            break
+        }
     }
 }
