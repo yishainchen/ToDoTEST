@@ -5,6 +5,9 @@
 //  Created by B1media on 2016/10/12.
 //  Copyright © 2016年 yishainChen. All rights reserved.
 //
+// 書上有一個小bug
+//http://stackoverflow.com/questions/38719436/caught-nsinternalinconsistencyexception-request-for-rect-at-invalid-indexpath/39065149#39065149
+//感謝蜂哥
 
 import XCTest
 
@@ -27,6 +30,7 @@ extension ItemCellTests {
 class ItemCellTests: XCTestCase {
     
     var tableView: UITableView!
+    var dataSource: UITableViewDataSource!
     
     override func setUp() {
         super.setUp()
@@ -36,8 +40,10 @@ class ItemCellTests: XCTestCase {
             withIdentifier: "ItemListViewController") as! ItemListViewController
         _ = controller.view
         tableView = controller.tableView
-        tableView?.dataSource = FakeDataSource()
-        
+        // 要生成instance才能做source
+        dataSource = FakeDataSource()
+        tableView.dataSource = dataSource
+
     }
     
     override func tearDown() {
@@ -66,20 +72,20 @@ class ItemCellTests: XCTestCase {
     func testSUT_HasLocationLabel() {
         
         let cell = tableView?.dequeueReusableCell(
-            withIdentifier: "ItemCell", for: IndexPath(row: 0, section: 0)) as! ItemCell
+            withIdentifier:"ItemCell", for: IndexPath(row: 0, section: 0)) as! ItemCell
         XCTAssertNotNil(cell.locationLabel)
     }
     
     func testSUT_HasDateLabel() {
         
         let cell = tableView?.dequeueReusableCell(
-            withIdentifier: "ItemCell", for: IndexPath(row: 0, section: 0)) as! ItemCell
+            withIdentifier:"ItemCell", for: IndexPath(row: 0, section: 0)) as! ItemCell
         XCTAssertNotNil(cell.dateLabel)
     }
     
     func testConfigWithItem_SetsLabelTexts() {
         let cell = tableView?.dequeueReusableCell(
-            withIdentifier: "ItemCell", for: IndexPath(row: 0, section: 0)) as! ItemCell
+            withIdentifier:"ItemCell", for: IndexPath(row: 0, section: 0)) as! ItemCell
         cell.configCellWithItem(item: ToDoItem(title: "First", itemDescription:
             nil, timestamp: 1456150025, location: Location(name: "Home")))
         XCTAssertEqual(cell.titleLabel.text, "First")
@@ -89,7 +95,7 @@ class ItemCellTests: XCTestCase {
     
     func testTitle_ForCheckedTasks_IsStrokeThrough() {
         let cell = tableView?.dequeueReusableCell(
-            withIdentifier: "ItemCell", for: IndexPath(row: 0, section: 0)) as! ItemCell
+            withIdentifier:"ItemCell", for: IndexPath(row: 0, section: 0)) as! ItemCell
         let toDoItem = ToDoItem(title: "First",
                                 itemDescription: nil,
                                 timestamp: 1456150025,

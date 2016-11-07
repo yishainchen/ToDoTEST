@@ -46,6 +46,7 @@ class InputViewController: UIViewController {
         if let dateText = self.dateTextField.text
             , dateText.characters.count > 0 {
             date = dateFormatter.date(from: dateText)
+            
         } else {
             date = nil
         }
