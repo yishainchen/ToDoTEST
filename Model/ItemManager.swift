@@ -6,7 +6,7 @@
 //  Copyright © 2016年 yishainChen. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ItemManager : NSObject{
     var toDoCount: Int { return toDoItems.count }
@@ -23,7 +23,6 @@ class ItemManager : NSObject{
         }
         return documentURL.appendingPathComponent("toDoItems.plist")
     }
-    
     var donePathURL: URL {
         let fileURLs = FileManager.default.urls(
             for: .documentDirectory, in: .userDomainMask)
@@ -33,6 +32,39 @@ class ItemManager : NSObject{
         }
         return documentURL.appendingPathComponent("doneItems.plist")
     }
+    
+    override init() {
+        super.init()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(ItemManager.save),
+            name: NSNotification.Name.UIApplicationWillResignActive,
+            object: nil)
+        // todoItem
+        if let nsToDoItems = NSArray(contentsOf: toDoPathURL) {
+            for dict in nsToDoItems {
+                if let toDoItem = ToDoItem(dict: dict as! NSDictionary) {
+                    toDoItems.append(toDoItem)
+                }
+            } }
+        
+        // doneItem
+        if let nsDoneItems = NSArray(contentsOf: donePathURL) {
+            for dict in nsDoneItems {
+                if let doneItem = ToDoItem(dict: dict as! NSDictionary) {
+                    doneItems.append(doneItem)
+                }
+                
+            }
+        }
+
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        save()
+    }
+    
     
     func addItem(item: ToDoItem) {
         if !toDoItems.contains(item) {

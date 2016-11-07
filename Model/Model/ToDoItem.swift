@@ -42,6 +42,19 @@ struct ToDoItem : Equatable{
         self.location = location
     }
     
+    init?(dict: NSDictionary) {
+        guard let title = dict[titleKey] as? String else
+        { return nil }
+        self.title = title
+        self.itemDescription = dict[itemDescriptionKey] as? String
+        self.timestamp = dict[timestampKey] as? Double
+        if let locationDict = dict[locationKey] as? NSDictionary {
+            self.location = Location(dict: locationDict)
+        } else {
+            self.location = nil
+        }
+    }
+    
 }
 
 

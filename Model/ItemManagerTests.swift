@@ -23,6 +23,8 @@ class ItemManagerTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        sut.removeAllItems()
+        sut = nil
     }
     
     func testToDoCount_Initially_ShouldBeZero() {
@@ -93,4 +95,44 @@ class ItemManagerTests: XCTestCase {
         sut.addItem(item: ToDoItem(title: "First"))
         XCTAssertEqual(sut.toDoCount, 1)
     }
+    
+    func test_ToDoItemsGetSerialized() {
+        var itemManager: ItemManager? = ItemManager()
+        let firstItem = ToDoItem(title: "First")
+        itemManager!.addItem(item: firstItem)
+        let secondItem = ToDoItem(title: "Second")
+        itemManager!.addItem(item: secondItem)
+        NotificationCenter.default.post(
+            name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        itemManager = nil
+        XCTAssertNil(itemManager)
+        itemManager = ItemManager()
+        
+        
+        XCTAssertEqual(itemManager?.toDoCount, 2)
+        XCTAssertEqual(itemManager?.itemAtIndex(index: 0), firstItem)
+        XCTAssertEqual(itemManager?.itemAtIndex(index: 1), secondItem)
+    }
+    
+    func test_DoneItemsGetSerialized() {
+        var itemManager: ItemManager? = ItemManager()
+        let firstItem = ToDoItem(title: "First")
+        itemManager!.addItem(item: firstItem)
+        let secondItem = ToDoItem(title: "Second")
+        itemManager!.addItem(item: secondItem)
+        itemManager!.checkItemAtIndex(index: 0)
+        NotificationCenter.default.post(
+            name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        itemManager = nil
+        XCTAssertNil(itemManager)
+        itemManager = ItemManager()
+        XCTAssertEqual(itemManager?.toDoCount, 1)
+        XCTAssertEqual(itemManager?.doneCount, 1)
+        XCTAssertEqual(itemManager?.doneItemAtIndex(index: 0), firstItem)
+        XCTAssertEqual(itemManager?.itemAtIndex(index: 0), secondItem)
+    
+    }
+    
+    
+
 }

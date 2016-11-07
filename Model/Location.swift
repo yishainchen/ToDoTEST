@@ -31,6 +31,21 @@ struct Location : Equatable {
         self.name = name
         self.coordinate = coordinate
     }
+    
+    init?(dict: NSDictionary) {
+        guard let name = dict[nameKey] as? String else
+        { return nil }
+        let coordinate: CLLocationCoordinate2D?
+        if let latitude = dict[latitudeKey] as? Double,
+            let longitude = dict[longitudeKey] as? Double {
+            coordinate = CLLocationCoordinate2DMake(
+                latitude, longitude)
+        } else {
+            coordinate = nil
+        }
+        self.name = name
+        self.coordinate = coordinate
+    }
 }
 
 
