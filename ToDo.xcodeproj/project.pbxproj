@@ -662,6 +662,7 @@
 				70B5A8E31DD040D0002FFA33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
